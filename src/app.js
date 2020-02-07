@@ -4,7 +4,7 @@ import DmnModeler from 'dmn-js/lib/Modeler';
 
 import fileDrop from 'file-drops';
 
-import { migrateTo13 } from '@bpmn-io/dmn-migrate';
+import { migrateDiagram } from '@bpmn-io/dmn-migrate';
 
 const dmnModeler = new DmnModeler({
   container: '#canvas'
@@ -14,7 +14,7 @@ const dmnModeler = new DmnModeler({
 async function importXML(xml) {
 
   // (1.1) migrate to DMN 1.3 if necessary
-  xml = await migrateTo13(xml);
+  xml = await migrateDiagram(xml);
 
   // (1.2) import DMN 1.3 diagram
   dmnModeler.importXML(xml, err => {
